@@ -37,6 +37,7 @@ def mostrarCanciones(dataBanda):
 def previewCancion(dataBanda):
     opcionSeleccionadaCancion = input('Ingrese el numero de su cancion: ')
     urlCancion = dataBanda['tracks']['items'][int(opcionSeleccionadaCancion)]['preview_url']
+    print(urlCancion)
     webbrowser.open(urlCancion)
 
 def buscarPreviewCancion():
