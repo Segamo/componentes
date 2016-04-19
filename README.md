@@ -4,7 +4,7 @@
 
 ## Hypermedia as the Engine of Application State
 
-* Lenguaje: Python
+* Lenguaje: Python 3.5.1
 * API: [Spotify API]
 
 ### Comando
