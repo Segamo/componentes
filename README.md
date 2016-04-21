@@ -9,7 +9,7 @@
 
 ### Comando
 ```sh
-$ py reproducionCancion.py
+$ py previewCancion.py
 ```
 
 [Spotify API]: <https://developer.spotify.com/web-api/>
