@@ -13,3 +13,15 @@ $ py previewCancion.py
 ```
 
 [Spotify API]: <https://developer.spotify.com/web-api/>
+
+## Practica 2
+
+## Message Driven Ping Pong
+
+* Lenguaje: Node JS
+* Broker: RabbitMQ
+
+### Comando
+```sh
+$ node app.js
+```
