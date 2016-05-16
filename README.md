@@ -21,7 +21,22 @@ $ py previewCancion.py
 * Lenguaje: Node JS
 * Broker: RabbitMQ
 
-### Comando
+### Comandos
+
 ```sh
+$ npm install
+```
+
+Para iniciar PING
+
+```sh
+$ cd Practica2/ping/app
+$ node app.js
+```
+
+Para iniciar PONG
+
+```sh
+$ cd Practica2/pong/app
 $ node app.js
 ```
