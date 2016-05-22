@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Request Ping</title>
+  </head>
+    <body>
+    <button id="button" type="button">Request Ping</button>
+    <div id="response"></div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#button').click(function() {
+            $.get('http://localhost:4000/ping')
+        });
+    });
+    </script>
+  </body>
+</html>

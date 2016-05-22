@@ -27,14 +27,14 @@ $ py previewCancion.py
 $ npm install
 ```
 
-Para iniciar PING
+PING
 
 ```sh
 $ cd Practica2/ping/app
 $ node app.js
 ```
 
-Para iniciar PONG
+PONG
 
 ```sh
 $ cd Practica2/pong/app

@@ -3,7 +3,6 @@
   "main": "app.js",
   "dependencies": {
     "amqplib": "^0.4.1",
-    "express": "^4.13.4",
-    "sleep": "^3.0.1"
+    "express": "^4.13.4"
   }
 }
