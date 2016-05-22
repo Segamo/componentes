@@ -40,3 +40,5 @@ PONG
 $ cd Practica2/pong/app
 $ node app.js
 ```
+
+Como usar la aplicacion:

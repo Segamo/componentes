@@ -3,23 +3,20 @@ var app = express();
 var colaPing = 'PING_TASKS';
 var colaPong = 'PONG_TASKS';
 var open = require('amqplib').connect('amqp://localhost');
-var mensajeFinal;
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
 app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Home'
-  });
+  res.render('index');
 });
 
 app.get('/ping', function (req, res) {
-  publisher().then(function(response){
+  publisherPing().then(function(response){
     if(response){
-      notificacionPong(res).then(function(){
-        res.send("Mensaje Pong recibido");
+      consumirNotificacionPong(res).then(function(){
+        res.send("Mensaje Pong procesado");
       });
     }
   })
@@ -30,7 +27,7 @@ app.listen(4000, function () {
 });
 
 // Publisher
-function publisher() {
+function publisherPing() {
   return open.then(function(conn) {
     return conn.createChannel();
   }).then(function(ch) {
@@ -41,7 +38,7 @@ function publisher() {
   }).catch(console.warn);
 }
 
-function notificacionPong(res){
+function consumirNotificacionPong(res){
   return open.then(function(conn) {
     return conn.createChannel();
   }).then(function(ch) {
@@ -49,31 +46,10 @@ function notificacionPong(res){
       console.log("Consumiendo mensaje de la cola pong...");
       return ch.consume(colaPong, function(msg) {
         if (msg !== null) {
-          console.log(msg.content.toString());
           ch.ack(msg);
-          mensajeFinal = msg.content.toString();
+          console.log(msg.content.toString());
         }
       });
     });
   }).catch(console.warn);
 }
-
-/*
-
-Cliente da un comando para PING que emita un PING_MESSAGE
-
-PING_MESSAGE se envia a un Broker
-
-PONG recibe el PING_MESSAGE por medio del Broker
-
-PONG simula un retraso de 2 segundos
-
-PONG emite un PONG_MESSAGE al Broker
-
-PING cuando reciba un PONG_MESSAGE completa el request http
-
-PONG da respuesta al Cliente
-
-PONG responde las consutlas por http cuantos PING_MESSAGE a contestado y recibido
-
-*/
