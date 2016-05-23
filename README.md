@@ -33,14 +33,14 @@ $ npm install
 PING
 
 ```sh
-$ cd Practica2/ping/app
+$ cd Practica2/ping
 $ node app.js
 ```
 
 PONG
 
 ```sh
-$ cd Practica2/pong/app
+$ cd Practica2/pong
 $ node app.js
 ```
 
