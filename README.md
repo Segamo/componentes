@@ -43,5 +43,5 @@ $ node app.js
 
 Como usar la aplicacion:
 
-* Ingresar a la URL http://localhost:4000/ para realizar peticiones
-* Ingresar a http://localhost:4001/resumen para ver el resumen de las peticiones
+* Ingresar a la URL [http://localhost:4000/](http://localhost:4000/) para realizar peticiones
+* Ingresar a [http://localhost:4001/resumen](http://localhost:4001/resumen) para ver el resumen de las peticiones
