@@ -18,8 +18,11 @@ $ py previewCancion.py
 
 ## Message Driven Ping Pong
 
-* Lenguaje: Node JS
+* Lenguaje: JavaScript
 * Broker: RabbitMQ
+* Libreria: [AMQP.NODE]
+
+[AMQP.NODE]: <https://github.com/squaremo/amqp.node>
 
 ### Comandos
 

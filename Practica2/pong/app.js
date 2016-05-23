@@ -12,14 +12,6 @@ app.listen(4001, function () {
   consumer();
 });
 
-app.get('/resumen', function (recolaPong, res) {
-  var respuestaFinal = {
-                        'Mensajes recibidos': mensajesProcesados,
-                        'Mensajes enviados': mensajesEnviados
-                        };
-  res.send(respuestaFinal);
-});
-
 // Consumer
 function consumer() {
   open.then(function(conn) {
@@ -46,3 +38,11 @@ function enviarNotificacionAPing(ch){
     mensajesProcesados++;
   });
 }
+
+app.get('/resumen', function (recolaPong, res) {
+  var respuestaFinal = {
+                        'Mensajes recibidos': mensajesProcesados,
+                        'Mensajes enviados': mensajesEnviados
+                        };
+  res.send(respuestaFinal);
+});
