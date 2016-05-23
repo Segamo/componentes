@@ -17,7 +17,7 @@ app.listen(4000, function () {
 });
 
 app.get('/ping', function (req, res) {
-  publisherPing().then(function(response){ //respuesta de la ultima promesa encadenada sendToQuee
+  publisherPing().then(function(response){
     if(response){
       consumirNotificacionPong(res).then(function(){
         res.send("OK");
@@ -27,13 +27,13 @@ app.get('/ping', function (req, res) {
 });
 
 // Publisher
-function publisherPing() {// retorna toda la promesa encadenada
-  return open.then(function(conn) { // abto conexion encansulado como promesa
-    return conn.createChannel(); // encanado
+function publisherPing() {
+  return open.then(function(conn) {
+    return conn.createChannel();
   }).then(function(ch) {
-    return ch.assertQueue(colaPing).then(function(ok) { // verifica que esta cola exista
+    return ch.assertQueue(colaPing).then(function(ok) {
       console.log("Enviando mensaje a la cola ping...");
-      return ch.sendToQueue(colaPing, new Buffer('PING_MESSAGE')); // envia a la cola
+      return ch.sendToQueue(colaPing, new Buffer('PING_MESSAGE'));
     });
   }).catch(console.warn);
 }
@@ -46,7 +46,7 @@ function consumirNotificacionPong(res){
       console.log("Consumiendo mensaje de la cola pong...");
       return ch.consume(colaPong, function(msg) {
         if (msg !== null) {
-          ch.ack(msg); //akcnolge ya cogi este mensaje ya se puede borrar
+          ch.ack(msg);
           console.log(msg.content.toString());
         }
       });
