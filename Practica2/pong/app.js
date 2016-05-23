@@ -7,16 +7,17 @@ var open = require('amqplib').connect('amqp://localhost');
 var mensajesProcesados = 0;
 var mensajesEnviados = 0;
 
-app.get('/resumen', function (recolaPong, res) {
-  var respuestaFinal = {'Mensajes recibidos': mensajesProcesados,
-                        'Mensajes enviados': mensajesEnviados
-                        };
-  res.send(respuestaFinal);
-});
-
 app.listen(4001, function () {
   console.log('Escuchando en el puerto 4001');
   consumer();
+});
+
+app.get('/resumen', function (recolaPong, res) {
+  var respuestaFinal = {
+                        'Mensajes recibidos': mensajesProcesados,
+                        'Mensajes enviados': mensajesEnviados
+                        };
+  res.send(respuestaFinal);
 });
 
 // Consumer
@@ -30,7 +31,9 @@ function consumer() {
           console.log(msg.content.toString());
           ch.ack(msg);
           mensajesEnviados++;
-          setTimeout(function(){enviarNotificacionAPing(ch);},2000);
+          setTimeout(function(){
+            enviarNotificacionAPing(ch);
+          },2000);
         }
       });
     });
